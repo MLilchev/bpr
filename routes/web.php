@@ -13,4 +13,13 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
+})->name('home.index');
+
+Route::get('/staff', function () {
+    return view('staff');
+})->name('staff.index');
+
+
+Route::get('/subjects', function () {
+    return view('subjects');
+})->name('subjects.index');
