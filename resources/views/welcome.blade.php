@@ -64,6 +64,59 @@
         </style>
     </head>
     <body>
+    <?php $path = Storage::disk('local')->getDriver()->getAdapter()->getPathPrefix(); 
+$list_contents = glob('C:/xampp/htdocs/bpr/bpr/public/audio/*mp3');
+$folder = 'audio';
+$fsi = new FilesystemIterator($folder);
+$countFsi = iterator_count($fsi);
+
+function prepareFileName($string) {
+    $noFileExtension = preg_replace("/\\.[^.\\s]{3,4}$/", '', $string);
+    $noUnderscores = str_replace('_', ' ', $noFileExtension);
+    return $noUnderscores;
+}
+
+
+?>
+
+<script src="{{ asset('js/app.js') }}"></script>
+<script src="{{ asset('js/audioPlayer.js') }}"></script>
+<audio controls id="audioPlayer">
+    Sorry, you do not support this feature
+</audio>
+<ul id="playlist">
+    <div class="container">
+        <div class='row'>
+            <div class="col-md-4">
+<!--     <li class="current-song">
+        <a href="/audio/01 - Pilot.mp3">
+            Song 1
+        </a>
+    </li>
+    <li>
+        <a href="/audio/02 - GlowCloud.mp3">
+            Song 2
+        </a>
+    </li> -->
+<?php   
+    //echo $countFsi;
+    $i = 0;
+    foreach ($fsi as $it) {
+        $part = "<a href='".(dirname($it))."/".($it->getFilename())."'>".prepareFileName($it->getFilename())."</a></li>";
+        if ($i == 0) {
+            echo "<li class='current-song'>".$part;
+        } elseif ($i == ($countFsi/2)) {
+            echo "</div><div class='col-md-4'><li>".$part;
+        } else {
+            echo "<li>".$part;
+        }
+    $i++;
+    } 
+?>
+        </div>
+    </div>
+</div>
+</ul>
         <div class="flex-center position-ref full-height">
             @if (Route::has('login'))
                 <div class="top-right links">
@@ -95,5 +148,8 @@
                 </div>
             </div>
         </div>
+        <script>
+    audioPlayer2();
+</script>
     </body>
 </html>

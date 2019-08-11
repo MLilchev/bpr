@@ -142,3 +142,14 @@ dd {
 #playlist .current-song a {
   color:blue;
 }
+
+.column {
+  float: left;
+  width: 50%;
+}
+
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}

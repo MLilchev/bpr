@@ -21,5 +21,7 @@ Route::get('/staff', function () {
 
 
 Route::get('/subjects', function () {
-    return view('subjects');
+    return view('subjects/index')
+    //->with('list_content', 'test')
+    ;
 })->name('subjects.index');

@@ -20,4 +20,32 @@ function audioPlayer() {
         $("#audioPlayer")[0].src = $("#playlist li a")[currentSong].href;
         $("#audioPlayer")[0].play();
     })
+
+
+
+}
+
+
+function audioPlayer2() {
+    //var currentSong = 0;
+    var audioElement = $("#audioPlayer")[0];
+    
+    audioElement.src = $("#playlist li a")[0];
+
+    
+
+    if (audioElement === undefined || audioElement === null) {
+        alert("There was an error with the audio player on this page. Please contact support.");
+        return;
+    } else {
+        //audioElement.play();
+        $("#playlist li a").click(function(e){
+            e.preventDefault();
+            audioElement.src = this;
+            audioElement.play();
+            $("#playlist li").removeClass("current-song");
+            //currentSong = $(this).parent().index();
+            $(this).parent().addClass("current-song");
+        });
+    }
 }
