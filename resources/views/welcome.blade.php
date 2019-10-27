@@ -71,9 +71,9 @@ $fsi = new FilesystemIterator($folder);
 $countFsi = iterator_count($fsi);
 
 function prepareFileName($string) {
-    $noFileExtension = preg_replace("/\\.[^.\\s]{3,4}$/", '', $string);
-    $noUnderscores = str_replace('_', ' ', $noFileExtension);
-    return $noUnderscores;
+    $no_file_extension = preg_replace("/\\.[^.\\s]{3,4}$/", '', $string);
+    $no_underscores = str_replace('_', ' ', $no_file_extension);
+    return $no_underscores;
 }
 
 

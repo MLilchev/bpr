@@ -130,17 +130,18 @@ dd {
 }
 
 
-#playlist {
+.playlist {
   list-style: none;
 }
 
-#playlist li a {
-  color:black;
+.playlist li a {
+  color: #000000;
   text-decoration: none;
+  border-left: 6px solid #F8AEAE;
 }
 
-#playlist .current-song a {
-  color:blue;
+.playlist .current-song a {
+  color: #0000ff;
 }
 
 .column {
